@@ -1,11 +1,12 @@
-
 # wardrobe
 
 **wardrobe** is a fast, minimalist in-memory key-value store written in Go, inspired by Redis. Built from scratch, it supports core Redis functionalities like persistence, replication, transactions, streams, and TTL — all accessible via `redis-cli`.
 
 ---
+
 (I named it **wardrobe** because it's an in-house Redis replica I built for an internal app at my company — and what better name for in-house storage than **wardrobe** ✨)
-##  features
+
+## features
 
 - 🧠 **In-Memory Storage** – blazing fast access
 - 💾 **RDB Persistence** – saves data to `dump.rdb`
@@ -17,7 +18,7 @@
 
 ---
 
-## how do you run this ? 
+## how do you run this ?
 
 ### 1. clone and build
 
@@ -35,87 +36,81 @@ go build -o wardrobe
 
 ```
 
-----------
+---
 
 ## using `redis-cli` to test
 
 ```bash
 redis-cli -p 8000
-
 ```
 
 Example commands:
+checking if it works :
 
-```bash
-SET hello "sidpai"
-GET hello
-EXPIRE hello 10
-DEL hello
+![pingpong](https://i.postimg.cc/G2zt1QZT/Screenshot-2025-07-12-at-7-32-30-PM.png)
+working with strings :
+![Strings](https://i.postimg.cc/k5KRLWJW/Screenshot-2025-07-12-at-7-26-29-PM.png)
 
-```
+working with lists :
+![Lists](https://i.postimg.cc/4d17xZhd/Screenshot-2025-07-12-at-7-27-32-PM.png)
 
-----------
+working with sets :
+![Sets](https://i.postimg.cc/ydK3KWxt/Screenshot-2025-07-12-at-7-27-39-PM.png)
 
+using transactions :
+![transactions](https://i.postimg.cc/7PWPMfD4/Screenshot-2025-07-12-at-7-34-56-PM.png)
 
-## commands it supports : 
+using expiration on values :
+![ttl](https://i.postimg.cc/sDWm96qJ/Screenshot-2025-07-12-at-7-43-30-PM.png)
 
-| Command                    | Description                                      |
-|---------------------------|--------------------------------------------------|
-| `SET key value`           | Set a key to a value                             |
-| `GET key`                 | Get the value of a key                           |
-| `DEL key`                 | Delete a key                                     |
-| `EXPIRE key seconds`      | Set TTL for a key                                |
-| `INCR key`                | Increment a key’s integer value                  |
-| `MULTI` / `EXEC`          | Start and execute a transaction                  |
-| `XADD stream key value`   | Add entry to a stream                            |
-| `PING`                    | Ping the server                                  |
+---
 
+## commands it supports :
 
-----------
+| Command          | Description                     |
+| ---------------- | ------------------------------- |
+| `SET key value`  | Set a key to a value            |
+| `GET key`        | Get the value of a key          |
+| `DEL key`        | Delete a key                    |
+| `PX key seconds` | Set TTL for a key               |
+| `INCR key`       | Increment a key’s integer value |
+| `MULTI` / `EXEC` | Start and execute a transaction |
+| `PING`           | Ping the server                 |
+
+---
 
 ## testing out replication
 
-Run a master and replica instance:
+starting the master instance :
+![](https://i.postimg.cc/FFdz6jTz/Screenshot-2025-07-12-at-7-36-17-PM.png)
+creating the replica instance :
+![](https://i.postimg.cc/pVwrMpSZ/Screenshot-2025-07-12-at-7-37-45-PM.png)
 
-```bash
-# Master
-./wardrobe --port 8000
-
-# Replica (on a different port)
-./wardrobe --port 8001 --replicaof=127.0.0.1 8000
-
-```
-
-----------
+---
 
 ## testing out persistence
 
--   `dump.rdb` is auto-loaded on startup if available.
-    
--   Future enhancements: snapshotting and AOF.
-    
+- `dump.rdb` is auto-loaded on startup if available.
 
-----------
+---
 
-## example of a transaction
+## future enhancements
 
-```bash
-MULTI
-SET paisa 100
-INCR paisa
-EXEC
-```
+- supporting more data types, rn supports strings, lists and sets.
+- snapshotting of rdb and AOF.
 
-----------
+---
 
 ## contributing
 
-PRs, issues, and feature requests welcome! Open the door to contributions — just like we cache your data 😉
+PRs, issues, and feature requests welcome!
 
-----------
+---
 
-## 📎 Repo
+## references
 
-[🔗 GitHub → siddarthpai/wardrobe](https://github.com/siddarthpai/wardrobe)
+[GitHub → siddarthpai/wardrobe](https://github.com/siddarthpai/wardrobe)
+[Redis Documentation](https://redis.io/docs/latest/)
+[I also like blogging, check out the blog!](https://blog-site-sidd.vercel.app/posts/build_my_own_redis)
 
-----------
+---
