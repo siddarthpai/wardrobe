@@ -82,7 +82,7 @@ Run a master and replica instance:
 ./wardrobe --port 8000
 
 # Replica (on a different port)
-./wardrobe --port 8001 --replicaof 127.0.0.1 8000
+./wardrobe --port 8001 --replicaof=127.0.0.1 8000
 
 ```
 
@@ -105,12 +105,6 @@ SET paisa 100
 INCR paisa
 EXEC
 ```
-
-----------
-
-## tweaking the configuration
-
-You can tweak startup configs using `redis.conf` or CLI flags. TTL handling and replication configs are parsed via the config loader in `main.go`.
 
 ----------
 
