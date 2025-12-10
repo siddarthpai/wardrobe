@@ -17,7 +17,7 @@ type DumpParser struct {
 	Databases []DatabaseSection
 }
 
-// DatabaseSection represents one logical Redis database from the dump.
+// DatabaseSection  represents one logical Redis database from the dump.
 type DatabaseSection struct {
 	ID           int
 	TotalEntries int

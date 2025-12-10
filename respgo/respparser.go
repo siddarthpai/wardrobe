@@ -72,7 +72,7 @@ func (p *RespParser) ParseArray() ([]string, error) {
 	}
 	cnt, err := strconv.Atoi(strings.TrimPrefix(countLine, "*"))
 	if err != nil {
-		return nil, fmt.Errorf("bad array count %q: %w", countLine, err)
+		return nil, fmt.Errorf("bad array count %q: %w ", countLine, err)
 	}
 
 	result := make([]string, cnt)

@@ -18,7 +18,7 @@ func main() {
 		replicaOf string
 	)
 	flag.StringVar(&portOpt, "port", "8000", "port to listen on")
-	flag.StringVar(&replicaOf, "replicaof", "", "master address in form host:port")
+	flag.StringVar(&replicaOf, "replicaof ", "", "master address in form host:port")
 	flag.Parse()
 
 	cacheSvc := store.New()

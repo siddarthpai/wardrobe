@@ -104,7 +104,7 @@ func (kv *KVStore) handleExpiry(timeout <-chan time.Time, key string) {
 }
 
 func (kv *KVStore) LoadRDB(master net.Conn) {
-	fmt.Println("started loading rdb from master...")
+	fmt.Println("started loading rdb from master... ")
 	parser := respgo.NewParser(master)
 
 	msg, err := parser.ParseMessage()
