@@ -1,20 +1,20 @@
 # wardrobe
 
+(I named it **wardrobe** because it's an in-house Redis replica I built. What better name for in-house storage than **wardrobe** )
+
 **wardrobe** is a fast, minimalist in-memory key-value store written in Go, inspired by Redis. Built from scratch, it supports core Redis functionalities like persistence, replication, transactions, streams, and TTL — all accessible via `redis-cli`.
 
 ---
 
-(I named it **wardrobe** because it's an in-house Redis replica I built for an internal app at my company — and what better name for in-house storage than **wardrobe** ✨)
-
 ## features
 
-- 🧠 **In-Memory Storage** – blazing fast access
-- 💾 **RDB Persistence** – saves data to `dump.rdb`
-- 📡 **Master-Slave Replication** – supports replication config
-- ⏳ **TTL Support** – with `EXPIRE` and time-based key eviction
-- 🔄 **Transactions** – with `MULTI` and `EXEC`
-- 🌊 **Streams** – with `XADD`
-- ⚡ Fully **redis-cli compatible**
+- **In-Memory Storage** – blazing fast access
+- **RDB Persistence** – saves data to `dump.rdb`
+- **Master-Slave Replication** – supports replication config
+- **TTL Support** – with `EXPIRE` and time-based key eviction
+- **Transactions** – with `MULTI` and `EXEC`
+- **Streams** – with `XADD`
+- Fully **redis-cli compatible**
 
 ---
 
@@ -65,7 +65,7 @@ using expiration on values :
 
 ---
 
-## commands it supports :
+## commands it supports
 
 | Command          | Description                     |
 | ---------------- | ------------------------------- |
@@ -98,6 +98,7 @@ creating the replica instance :
 
 - supporting more data types, rn supports strings, lists and sets.
 - snapshotting of rdb and AOF.
+- look into making it more of a valkey replica with multithreading.
 
 ---
 
