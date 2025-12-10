@@ -111,7 +111,7 @@ PRs, issues, and feature requests welcome!
 ## references
 
 [GitHub → siddarthpai/wardrobe](https://github.com/siddarthpai/wardrobe)
+
 [Redis Documentation](https://redis.io/docs/latest/)
-[I also like blogging, check out the blog!](https://blog-site-sidd.vercel.app/posts/build_my_own_redis)
 
 ---
