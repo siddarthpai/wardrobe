@@ -6,46 +6,9 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"os"
 	"strconv"
 	"strings"
 )
-
-type ConfigLoader struct {
-	Path   string
-	Values map[string]string
-}
-
-func NewConfigLoader(path string) *ConfigLoader {
-	return &ConfigLoader{
-		Path:   path,
-		Values: make(map[string]string),
-	}
-}
-
-func (cl *ConfigLoader) Load() error {
-	f, err := os.Open(cl.Path)
-	if err != nil {
-		return fmt.Errorf("cannot open config %q: %w", cl.Path, err)
-	}
-	defer f.Close()
-
-	scanner := bufio.NewScanner(f)
-	for scanner.Scan() {
-		line := strings.TrimSpace(scanner.Text())
-		if line == "" || strings.HasPrefix(line, "#") {
-			continue
-		}
-		parts := strings.Fields(line)
-		if len(parts) < 2 {
-			continue
-		}
-		key := parts[0]
-		val := parts[len(parts)-1]
-		cl.Values[key] = val
-	}
-	return scanner.Err()
-}
 
 type RespParser struct {
 	r *bufio.Reader
